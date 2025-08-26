@@ -276,7 +276,7 @@ export const createMcpServer = (): McpServer => {
 
 	tool(
 		"mobile_click_on_screen_at_coordinates",
-		"Click on the screen at given x,y coordinates. If clicking on an element, use the list_elements_on_screen tool to find the coordinates.",
+		"Click on the screen at given x,y coordinates. IMPORTANT: You MUST call mobile_list_elements_on_screen first to get element coordinates before using this tool.",
 		{
 			x: z.number().describe("The x coordinate to click on the screen, in pixels"),
 			y: z.number().describe("The y coordinate to click on the screen, in pixels"),
@@ -290,7 +290,7 @@ export const createMcpServer = (): McpServer => {
 
 	tool(
 		"mobile_long_press_on_screen_at_coordinates",
-		"Long press on the screen at given x,y coordinates. If long pressing on an element, use the list_elements_on_screen tool to find the coordinates.",
+		"Long press on the screen at given x,y coordinates. IMPORTANT: You MUST call mobile_list_elements_on_screen first to get element coordinates before using this tool.",
 		{
 			x: z.number().describe("The x coordinate to long press on the screen, in pixels"),
 			y: z.number().describe("The y coordinate to long press on the screen, in pixels"),
@@ -367,7 +367,7 @@ export const createMcpServer = (): McpServer => {
 
 	tool(
 		"swipe_on_screen",
-		"Swipe on the screen",
+		"Swipe on the screen. IMPORTANT: You MUST call mobile_list_elements_on_screen first to understand the current screen state before using this tool.",
 		{
 			direction: z.enum(["up", "down", "left", "right"]).describe("The direction to swipe"),
 			x: z.number().optional().describe("The x coordinate to start the swipe from, in pixels. If not provided, uses center of screen"),
@@ -392,7 +392,7 @@ export const createMcpServer = (): McpServer => {
 
 	tool(
 		"mobile_type_keys",
-		"Type text into the focused element",
+		"Type text into the focused element. IMPORTANT: You MUST call mobile_list_elements_on_screen first to identify text input elements and ensure focus before using this tool.",
 		{
 			text: z.string().describe("The text to type"),
 			submit: z.boolean().describe("Whether to submit the text. If true, the text will be submitted as if the user pressed the enter key."),
