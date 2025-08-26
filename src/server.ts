@@ -239,7 +239,7 @@ export const createMcpServer = (): McpServer => {
 
 	tool(
 		"mobile_click_on_screen_at_coordinates",
-		"Click on the screen at given x,y coordinates. If clicking on an element, use the list_elements_on_screen tool to find the coordinates.",
+		"Click on the screen at given x,y coordinates. IMPORTANT: You MUST call mobile_list_elements_on_screen first to get element coordinates before using this tool.",
 		{
 			device: z.string().describe("The device identifier to use. Use mobile_list_available_devices to find which devices are available to you."),
 			x: z.number().describe("The x coordinate to click on the screen, in pixels"),
@@ -254,7 +254,7 @@ export const createMcpServer = (): McpServer => {
 
 	tool(
 		"mobile_long_press_on_screen_at_coordinates",
-		"Long press on the screen at given x,y coordinates. If long pressing on an element, use the list_elements_on_screen tool to find the coordinates.",
+		"Long press on the screen at given x,y coordinates. IMPORTANT: You MUST call mobile_list_elements_on_screen first to get element coordinates before using this tool.",
 		{
 			device: z.string().describe("The device identifier to use. Use mobile_list_available_devices to find which devices are available to you."),
 			x: z.number().describe("The x coordinate to long press on the screen, in pixels"),
@@ -334,7 +334,7 @@ export const createMcpServer = (): McpServer => {
 
 	tool(
 		"mobile_swipe_on_screen",
-		"Swipe on the screen",
+		"Swipe on the screen. IMPORTANT: You MUST call mobile_list_elements_on_screen first to understand the current screen state before using this tool.",
 		{
 			device: z.string().describe("The device identifier to use. Use mobile_list_available_devices to find which devices are available to you."),
 			direction: z.enum(["up", "down", "left", "right"]).describe("The direction to swipe"),
@@ -360,7 +360,7 @@ export const createMcpServer = (): McpServer => {
 
 	tool(
 		"mobile_type_keys",
-		"Type text into the focused element",
+		"Type text into the focused element. IMPORTANT: You MUST call mobile_list_elements_on_screen first to identify text input elements and ensure focus before using this tool.",
 		{
 			device: z.string().describe("The device identifier to use. Use mobile_list_available_devices to find which devices are available to you."),
 			text: z.string().describe("The text to type"),
